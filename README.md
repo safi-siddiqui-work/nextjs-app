@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SAFI
 
-## Getting Started
+[Live Project](https://nextjs.org)
 
-First, run the development server:
+## Safi's world of applications
+
+Full Stack SaaS & AI ML Engineer - Next.js NestJS
+
+## Maintenance
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm update
+pnpm approve-builds
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Internals
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- favicon
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Prettier
 
-## Learn More
+-.prettierrc, .prettierignore
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm add -D prettier prettier-plugin-organize-imports prettier-plugin-tailwindcss
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Shadcn
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- components.json, /lib/**, /hooks/**, /components/**
+- Update components to isolate shadcn
 
-## Deploy on Vercel
+```bash
+pnpm dlx shadcn@latest init -b base -p vega
+pnpm shadcn add
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
