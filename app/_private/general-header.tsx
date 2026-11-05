@@ -1,34 +1,29 @@
 import ModeToggleDropdown from "@/components/core/mode-toggle-dropdown";
 import { FlexRow } from "@/components/shared/section";
+import { ShadcnButtonLink } from "@/components/shared/shadcn";
 import { HeadingThree } from "@/components/shared/typography";
-import { Button } from "@/components/ui/button";
+import { InfoData } from "@/lib/constants/data/info";
+import { WebRoutes } from "@/lib/constants/routes/web-routes";
 import { LogInIcon } from "lucide-react";
 import Link from "next/link";
 
 export const GeneralHeader = () => {
   return (
-    <header className="flex items-center justify-between border-b px-4 py-2">
-      <Link
-        href={"/"}
-        // href={WebRoutes.home}
-      >
-        <HeadingThree>Safi Siddiqui</HeadingThree>
+    <header className="flex items-center justify-between border-b p-4">
+      <Link href={WebRoutes.home}>
+        <HeadingThree>{InfoData?.saas?.name}</HeadingThree>
       </Link>
 
       <FlexRow className="gap-4">
-        <Button
-          nativeButton={false}
-          size={"sm"}
-          render={
-            <Link
-              href={"/"}
-              //  href={WebRoutes?.auth?.signin?.home}
-            >
-              <LogInIcon />
-              Sign In
-            </Link>
-          }
-        />
+        <ShadcnButtonLink
+          linkProps={{
+            // href: WebRoutes?.auth?.signin?.home,
+            href: WebRoutes?.home,
+          }}
+        >
+          <LogInIcon />
+          Sign In
+        </ShadcnButtonLink>
 
         <ModeToggleDropdown />
       </FlexRow>

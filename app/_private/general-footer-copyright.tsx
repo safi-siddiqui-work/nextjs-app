@@ -1,5 +1,6 @@
 "use client";
 
+import { FlexRow } from "@/components/shared/section";
 import { format } from "date-fns";
 import { CopyrightIcon } from "lucide-react";
 import { startTransition, useEffect, useState } from "react";
@@ -13,9 +14,9 @@ export const GeneralFooterCopyright = () => {
   }, []);
 
   return (
-    <div className="flex">
+    <FlexRow>
       <CopyrightIcon />
       <p className="ml-2 text-sm">{year} SAFI SIDDIQUI. All rights reserved.</p>
-    </div>
+    </FlexRow>
   );
 };

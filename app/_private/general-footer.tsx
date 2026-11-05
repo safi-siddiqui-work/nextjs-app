@@ -1,41 +1,49 @@
+import { FlexCol, FlexRow } from "@/components/shared/section";
+import { ShadcnButtonLink } from "@/components/shared/shadcn";
+import { HeadingThree, Paragraph } from "@/components/shared/typography";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  BoxIcon,
-  DollarSignIcon,
-  HandCoinsIcon,
-  Layers2Icon,
-  SparklesIcon,
-} from "lucide-react";
-import Link from "next/link";
-import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { InfoData } from "@/lib/constants/data/info";
+import { ArrowUpRightIcon, Layers2Icon, SparklesIcon } from "lucide-react";
+import { FaGithub, FaLinkedin, FaNodeJs, FaWhatsapp } from "react-icons/fa";
 import {
   SiGmail,
   SiJavascript,
+  SiNestjs,
   SiNextdotjs,
   SiReact,
+  SiShadcnui,
+  SiTailwindcss,
   SiTypescript,
   SiUpwork,
 } from "react-icons/si";
 import { GeneralFooterCopyright } from "./general-footer-copyright";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 export const GeneralFooter = () => {
   const techSkills = [
     {
-      icon: SiNextdotjs,
-      title: "Next.js",
-    },
-    {
       icon: Layers2Icon,
-      title: "Full Stack",
+      title: "Full Stack SaaS",
     },
     {
       icon: SparklesIcon,
       title: "AI Engineer",
     },
     {
+      icon: SiNextdotjs,
+      title: "Next.js",
+    },
+    {
+      icon: SiNestjs,
+      title: "NestJS",
+    },
+    {
       icon: SiReact,
       title: "React",
+    },
+    {
+      icon: FaNodeJs,
+      title: "NodeJS",
     },
     {
       icon: SiTypescript,
@@ -45,19 +53,13 @@ export const GeneralFooter = () => {
       icon: SiJavascript,
       title: "JavaScript",
     },
-  ];
-  const salesSkills = [
     {
-      icon: BoxIcon,
-      title: "Software",
+      icon: SiTailwindcss,
+      title: "Tailwind Css",
     },
     {
-      icon: DollarSignIcon,
-      title: "Sales",
-    },
-    {
-      icon: HandCoinsIcon,
-      title: "Business",
+      icon: SiShadcnui,
+      title: "Shadcn UI",
     },
   ];
 
@@ -90,49 +92,42 @@ export const GeneralFooter = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center gap-6 px-4 py-12">
-      <div className="flex flex-wrap items-center gap-4">
-        <Avatar className="size-10">
+    <FlexCol className="gap-6 px-4 py-12">
+      <FlexRow className="flex-wrap gap-4">
+        <Avatar className="size-20">
           <AvatarImage
-            src={"klasdlajsdkl"}
-            // src={ConstantImages?.profileAvatar}
+            src={InfoData?.profile?.avatar}
             alt="SAFI"
           />
         </Avatar>
-        <h1 className="text-xl font-bold">SAFI SIDDIQUI</h1>
-      </div>
+
+        <FlexCol>
+          <HeadingThree>{InfoData?.profile?.name}</HeadingThree>
+          <Paragraph>{InfoData?.profile?.headline}</Paragraph>
+        </FlexCol>
+      </FlexRow>
 
       <div className="flex flex-wrap items-center gap-2">
         {links?.map((a, index) => (
-          <Link
+          <ShadcnButtonLink
             key={index}
-            href={a?.url}
-            target="_blank"
-            rel="noopener noreferrer"
+            linkProps={{
+              href: a?.url,
+              target: "_blank",
+              rel: "noopener noreferrer",
+            }}
+            buttonProps={{
+              size: "default",
+            }}
           >
-            <Button
-              variant={"outline"}
-              className="flex items-center gap-2"
-            >
-              <a.icon className="" />
-              {a?.name}
-            </Button>
-          </Link>
+            <a.icon className="" />
+            {a?.name}
+            <ArrowUpRightIcon />
+          </ShadcnButtonLink>
         ))}
       </div>
 
       <div className="flex flex-wrap gap-2">
-        {salesSkills?.map((a) => (
-          <Button
-            key={a?.title}
-            size={"lg"}
-            // variant={"secondary"}
-          >
-            <a.icon className="" />
-            {a?.title}
-          </Button>
-        ))}
-
         {techSkills?.map((a) => (
           <Button
             key={a?.title}
@@ -146,6 +141,6 @@ export const GeneralFooter = () => {
       </div>
 
       <GeneralFooterCopyright />
-    </div>
+    </FlexCol>
   );
 };

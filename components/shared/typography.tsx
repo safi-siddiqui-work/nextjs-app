@@ -39,3 +39,16 @@ export const HeadingThree = ({
     {children}
   </h3>
 );
+
+export const Paragraph = ({
+  className,
+  children,
+  ...props
+}: ComponentProps<"p">) => (
+  <p
+    className={cn("", className)}
+    {...props}
+  >
+    {children}
+  </p>
+);
