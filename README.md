@@ -64,11 +64,23 @@ pnpm add @vercel/speed-insights @vercel/analytics
 
 - Update next.config.ts
 
-## Tanstack
+## Tanstack Query
 
 ```bash
 pnpm add @tanstack/react-query
 pnpm add -D @tanstack/eslint-plugin-query
+```
+
+- client, provider
+
+## Tanstack Form
+
+```bash
+pnpm add zod
+pnpm add @tanstack/react-form
+pnpm add @tanstack/react-devtools
+pnpm add @tanstack/react-form-nextjs
+pnpm add @tanstack/react-form-devtools
 ```
 
 - client, provider

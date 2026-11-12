@@ -1,6 +1,6 @@
 "use client";
 
-import { ConstantTanstackQuery } from "@/lib/constants/data/tanstack-query-keys";
+import { TanstackQueryKeys } from "@/lib/constants/data/tanstack-query-keys";
 import { getThemeCookie, setThemeCookie } from "@/lib/cookies/theme";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
@@ -13,7 +13,7 @@ export default function useAppTheme() {
   const queryClient = useQueryClient();
 
   const query = useQuery({
-    queryKey: [ConstantTanstackQuery?.themeCookie],
+    queryKey: [TanstackQueryKeys?.themeCookie],
     queryFn: () => {
       return getThemeCookie();
     },
@@ -31,14 +31,14 @@ export default function useAppTheme() {
           await setThemeCookie(systemTheme);
           setTheme(systemTheme);
           queryClient?.invalidateQueries({
-            queryKey: [ConstantTanstackQuery?.themeCookie],
+            queryKey: [TanstackQueryKeys?.themeCookie],
           });
         }
       } else {
         await setThemeCookie(th);
         setTheme(th);
         queryClient?.invalidateQueries({
-          queryKey: [ConstantTanstackQuery?.themeCookie],
+          queryKey: [TanstackQueryKeys?.themeCookie],
         });
       }
     },

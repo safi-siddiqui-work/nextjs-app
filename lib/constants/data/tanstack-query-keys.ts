@@ -1,3 +1,3 @@
-export const ConstantTanstackQuery = {
+export const TanstackQueryKeys = {
   themeCookie: "themeCookie",
 };
