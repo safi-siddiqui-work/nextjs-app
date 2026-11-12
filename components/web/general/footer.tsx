@@ -17,7 +17,7 @@ import {
   SiTypescript,
   SiUpwork,
 } from "react-icons/si";
-import { GeneralFooterCopyright } from "./general-footer-copyright";
+import { GeneralFooterCopyright } from "./footer-copyright";
 
 export const GeneralFooter = () => {
   const techSkills = [

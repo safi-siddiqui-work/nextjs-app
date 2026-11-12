@@ -1,7 +1,5 @@
+import { FlexCol } from "@/components/shared/section";
+
 export default function Page() {
-  return (
-    <div className="flex flex-col">
-      SIGIN
-    </div>
-  );
-};
+  return <FlexCol className="">SIGIN COMING SOON</FlexCol>;
+}
