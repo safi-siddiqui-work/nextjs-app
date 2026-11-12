@@ -18,7 +18,8 @@ export const GeneralHeader = () => {
         <ShadcnButtonLink
           linkProps={{
             // href: WebRoutes?.auth?.signin?.home,
-            href: WebRoutes?.home,
+            // href: WebRoutes?.home,
+            href: WebRoutes?.auth?.signin?.home,
           }}
         >
           <LogInIcon />

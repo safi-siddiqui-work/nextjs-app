@@ -1,6 +1,6 @@
-"use client";
+// "use client";
 
-import useAppTheme from "@/hooks/general/use-app-theme";
+import { getThemeCookie } from "@/lib/cookies/theme";
 import { cn } from "cn";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
@@ -11,22 +11,29 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export default function HtmlSection({ children }: { children: ReactNode }) {
-  const { appThemeServer } = useAppTheme();
+export default async function HtmlSection({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const themeCookie = await getThemeCookie();
 
-  if (!appThemeServer) {
-    return (
-      <html
-        suppressHydrationWarning
-        className={cn(
-          inter.variable,
-          "h-full scroll-smooth font-sans antialiased",
-        )}
-      >
-        {children}
-      </html>
-    );
-  }
+  // query client can't be used over html section
+  // const { appThemeServer } = useAppTheme();
+
+  // if (!appThemeServer) {
+  //   return (
+  //     <html
+  //       suppressHydrationWarning
+  //       className={cn(
+  //         inter.variable,
+  //         "h-full scroll-smooth font-sans antialiased",
+  //       )}
+  //     >
+  //       {children}
+  //     </html>
+  //   );
+  // }
 
   // Server component only
   // const theme = await getThemeCookie();
@@ -38,10 +45,12 @@ export default function HtmlSection({ children }: { children: ReactNode }) {
       className={cn(
         inter.variable,
         "h-full scroll-smooth font-sans antialiased",
-        appThemeServer,
+        // appThemeServer,
+        themeCookie,
       )}
       style={{
-        colorScheme: appThemeServer,
+        // colorScheme: appThemeServer,
+        colorScheme: themeCookie,
       }}
     >
       {children}

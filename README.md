@@ -58,9 +58,17 @@ pnpm add @vercel/speed-insights @vercel/analytics
 
 ## Constants
 
-- /lib/constants 
+- /lib/constants
 
 ## Images
 
 - Update next.config.ts
 
+## Tanstack
+
+```bash
+pnpm add @tanstack/react-query
+pnpm add -D @tanstack/eslint-plugin-query
+```
+
+- client, provider
