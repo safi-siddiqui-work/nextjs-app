@@ -1,7 +1,11 @@
 export const WebRoutes = {
   home: "/",
   auth: {
-    signup: "/signup",
+    signup: {
+      home: "/signup",
+      verify: "/signup/verify",
+      create: "/signup/create",
+    },
     signin: {
       home: "/signin",
       email: "/signin/email",

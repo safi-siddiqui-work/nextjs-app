@@ -2,11 +2,14 @@
 
 import { ShadcnToast } from "@/components/shared/shadcn";
 import { FieldGroup } from "@/components/ui/field";
+import { WebRoutes } from "@/lib/constants/routes/web-routes";
 import { useAppForm } from "@/lib/tanstack-form/context";
 import { LogInIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { SignupEmailSchema, SignupEmailSchemaType } from "./schema";
 
 export const SignupEmail = () => {
+  const router = useRouter();
   const form = useAppForm({
     defaultValues: {
       email: "",
@@ -17,6 +20,7 @@ export const SignupEmail = () => {
     onSubmit: async ({ value }) => {
       await new Promise((res) => setTimeout(res, 1000));
       ShadcnToast({ title: "Success" });
+      router?.push(WebRoutes?.auth?.signup?.verify);
     },
   });
 
@@ -30,7 +34,12 @@ export const SignupEmail = () => {
     >
       <FieldGroup>
         <form.AppField name="email">
-          {(field) => <field.TextField label="Email" />}
+          {(field) => (
+            <field.TextField
+              label="Email"
+              placeholder="safi-work@gmail.com"
+            />
+          )}
         </form.AppField>
 
         <form.AppForm>

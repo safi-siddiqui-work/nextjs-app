@@ -2,25 +2,25 @@
 
 import { ShadcnToast } from "@/components/shared/shadcn";
 import { FieldGroup } from "@/components/ui/field";
+import { WebRoutes } from "@/lib/constants/routes/web-routes";
 import { useAppForm } from "@/lib/tanstack-form/context";
 import { LogInIcon } from "lucide-react";
-import {
-  SigninEmailPasswordSchema,
-  SigninEmailPasswordSchemaType,
-} from "./schema";
+import { useRouter } from "next/navigation";
+import { SignupEmailVerifySchema, SignupEmailVerifySchemaType } from "./schema";
 
-export const SigninEmailPassword = () => {
+export const SignupEmailVerify = () => {
+  const router = useRouter();
   const form = useAppForm({
     defaultValues: {
-      email: "",
-      password: "",
-    } as SigninEmailPasswordSchemaType,
+      code: "",
+    } as SignupEmailVerifySchemaType,
     validators: {
-      onSubmit: SigninEmailPasswordSchema,
+      onSubmit: SignupEmailVerifySchema,
     },
     onSubmit: async ({ value }) => {
       await new Promise((res) => setTimeout(res, 1000));
       ShadcnToast({ title: "Success" });
+      router?.push(WebRoutes?.auth?.signup?.create);
     },
   });
 
@@ -33,27 +33,17 @@ export const SigninEmailPassword = () => {
       }}
     >
       <FieldGroup>
-        <form.AppField name="email">
+        <form.AppField name="code">
           {(field) => (
-            <field.TextField
-              label="Email"
-              placeholder="safi-work@gmail.com"
-            />
-          )}
-        </form.AppField>
-
-        <form.AppField name="password">
-          {(field) => (
-            <field.TextField
-              label="Password"
-              placeholder="********"
-              type="password"
+            <field.OtpField
+              label="Code"
+              maxLength={6}
             />
           )}
         </form.AppField>
 
         <form.AppForm>
-          <form.SubmitButton icon={LogInIcon}>Sign In</form.SubmitButton>
+          <form.SubmitButton icon={LogInIcon}>Verify</form.SubmitButton>
         </form.AppForm>
       </FieldGroup>
     </form>
